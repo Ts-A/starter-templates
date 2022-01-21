@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# React Template Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Folder Structure
 
-## Available Scripts
+```
+  src
+    components // To store react components that can be re-used
+    layout // To wrap components
+    pages // To wrap layout and components for a particular url. Used along with react-router v6
+    ui // To store reusable react ui features like buttons, etc.
+    styles // To store css files. Note: use module.css instead of .css
+    assets // To store images
+    helper // To store helper functions
+```
 
-In the project directory, you can run:
+## Creating components
 
-### `npm start`
+To create a new component
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+mkdir src/<component-name>
+touch src/<component-name>/index.js
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To create a css style page for that component
 
-### `npm test`
+```
+touch src/styles/<component-name>.module.css
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Similarly for pages, layout, and ui
 
-### `npm run build`
+## Running the server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+cp .env.example .env
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Fill the .env
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm start
+```
 
-### `npm run eject`
+## Pushing to repository
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Update .env.example for new .env variables. Note: Add .env variables as REACT_APP_VARIABLE
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+git pull origin development
+npm run fmt // Formats the code
+git add .
+git commit -m "feat: "
+git push origin <branch-name>
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Do not push to master branch / development branch
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Master -> for final merges from development
+Development -> for merges from all the other branches
+Create Your own branch -> Pull from development branch and merge your changes
 
-## Learn More
+## Dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+react
+react-router-dom v6
+prettier -D
+@material-ui /core /icons
